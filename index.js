@@ -30,18 +30,17 @@ function generateEmbed(embed) {
 		metaImage = '',
 		metaUrl = '',
 		metaColor = '';
-	if (embed.title) {
+
 		title = `<title>${embed.title}</title>`;
-		metaTitle = `<meta content="${embed.title}" property="og:title"></meta>`;
-	}
+		metaTitle = `<meta content="${embed.title}" property="og:title">`;
 
 	if (embed.message)  metaDescription = `<meta content="${embed.message}" property="og:description">`;
 	
 	if (embed.url) metaUrl = `<meta content="${embed.url}" property="og:url">`;
 
-	if (embed.image) metaImage = `<meta content="${he.encode(embed.image)}" property="og:image">;</meta>`;
+	if (embed.image) metaImage = `<meta content="${embed.image}" property="og:image">`;
 
-	if (embed.hexColor) metaColor = `<meta content="${he.encode(embed.hexColor)}" data-react-helmet="true" name="theme-color"> `;
+	if (embed.hexColor) metaColor = `<meta content="${embed.hexColor}" data-react-helmet="true" name="theme-color"> `;
 	
 	return `<!DOCTYPE html>
 				<html>
@@ -53,7 +52,6 @@ function generateEmbed(embed) {
 						${metaImage}
 						${metaColor} 
 					</head>
-					<body></body>
 				</html>`;
 }
 
