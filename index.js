@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
 	next();
   });
-  
+
 app.get('/ping', (req, res, next) => {
 	console.log('Pinged server to keep it alive.');
 	res.sendStatus(200);
@@ -24,8 +24,8 @@ app.get('/ping', (req, res, next) => {
 
 function generateEmbed(embed) {
 
-	let title = '',
-		metaTitle = '',
+	let title = 'Basic Title',
+		metaTitle = 'Basic Title',
 		metaDescription = '',
 		metaImage = '',
 		metaUrl = '',
