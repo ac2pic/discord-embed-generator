@@ -11,17 +11,29 @@ app.get('/ping', (req, res, next) => {
 	res.sendStatus(200);
 });
 
-function returnIfSet(prop, ifTrue) {
-	return prop ? ifTrue : "";
-}
+
 
 function generateEmbed(embed) {
-	let title = returnIfSet(embed.title, `<title>${he.encode(embed.title)}</title>`);
-	let metaTitle = returnIfSet(embed.title, `<meta content="${he.encode(embed.title)}" property="og:title"></meta>`);
-	let metaDescription = returnIfSet(embed.message, `<meta content="${he.encode(embed.message)}" property="og:description">`);
-	let metaUrl = returnIfSet(embed.url, `<meta content="${he.encode(embed.url)}" property="og:url">`);
-	let metaImage = returnIfSet(embed.image, `<meta content="${he.encode(embed.image)}" property="og:image">;</meta>`);
-	let metaColor = returnIfSet(embed.hexColor, `<meta content="${he.encode(embed.hexColor)}" data-react-helmet="true" name="theme-color"> `);
+
+	let title = '',
+		metaTitle = '',
+		metaDescription = '',
+		metaImage = '',
+		metaUrl = '',
+		metaColor = '';
+	if (embed.title) {
+		title = `<title>${he.encode(embed.title)}</title>`;
+		metaTitle = `<meta content="${he.encode(embed.title)}" property="og:title"></meta>`;
+	}
+
+	if (embed.message)  metaDescription = `<meta content="${he.encode(embed.message)}" property="og:description">`);
+	
+	if (embed.url) metaUrl = `<meta content="${he.encode(embed.url)}" property="og:url">`;
+
+	if (embed.image) metaImage = `<meta content="${he.encode(embed.image)}" property="og:image">;</meta>`;
+
+	if (embed.hexColor) metaColor = `<meta content="${he.encode(embed.hexColor)}" data-react-helmet="true" name="theme-color"> `;
+	
 	return `<!DOCTYPE html>
 				<html>
 					<head>
