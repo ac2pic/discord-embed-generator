@@ -37,7 +37,7 @@ function generateEmbed(embed) {
 }
 
 app.get("/embed", (req, res) => {
-	const {title, message, image, siteName, hexColor} = req.query;
+	const {title, message, image, hexColor} = req.query;
 
 	res.send(generateEmbed({
 	  title,
