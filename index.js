@@ -4,8 +4,17 @@ const express = require('express'),
 	he = require('he'),
 	port = process.env.PORT || 3123;
 const URL = '';
+
+
+
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
+	next();
+  });
+  
 app.get('/ping', (req, res, next) => {
 	console.log('Pinged server to keep it alive.');
 	res.sendStatus(200);
