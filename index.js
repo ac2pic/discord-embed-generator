@@ -21,7 +21,7 @@ app.get('/ping', (req, res, next) => {
 app.get("/embed", (req, res) => {
 	const {title, message, image, hexColor} = req.query;
 
-	res.redirect('https://twitter.com/search?q='+ req.query.message)''
+	res.redirect('https://twitter.com/search?q='+ req.query.message);
 });
 
 app.listen(port, function () {
