@@ -26,7 +26,7 @@ function generateEmbed(embed) {
 		metaTitle = `<meta content="${he.encode(embed.title)}" property="og:title"></meta>`;
 	}
 
-	if (embed.message)  metaDescription = `<meta content="${he.encode(embed.message)}" property="og:description">`);
+	if (embed.message)  metaDescription = `<meta content="${he.encode(embed.message)}" property="og:description">`;
 	
 	if (embed.url) metaUrl = `<meta content="${he.encode(embed.url)}" property="og:url">`;
 
