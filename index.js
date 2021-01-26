@@ -22,13 +22,13 @@ function generateEmbed(embed) {
 		metaUrl = '',
 		metaColor = '';
 	if (embed.title) {
-		title = `<title>${he.encode(embed.title)}</title>`;
-		metaTitle = `<meta content="${he.encode(embed.title)}" property="og:title"></meta>`;
+		title = `<title>${embed.title}</title>`;
+		metaTitle = `<meta content="${embed.title}" property="og:title"></meta>`;
 	}
 
-	if (embed.message)  metaDescription = `<meta content="${he.encode(embed.message)}" property="og:description">`;
+	if (embed.message)  metaDescription = `<meta content="${embed.message}" property="og:description">`;
 	
-	if (embed.url) metaUrl = `<meta content="${he.encode(embed.url)}" property="og:url">`;
+	if (embed.url) metaUrl = `<meta content="${embed.url}" property="og:url">`;
 
 	if (embed.image) metaImage = `<meta content="${he.encode(embed.image)}" property="og:image">;</meta>`;
 
