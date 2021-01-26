@@ -31,26 +31,19 @@ function generateEmbed(embed) {
 		metaUrl = 'https://discord-embed-generator.herokuapp.com/',
 		metaColor = '#00FFFF';
 
-		title = `<title>${title}</title>`;
-		metaTitle = `<meta content="${metaTitle}" property="og:title">`;
+	if (embed.message)  metaDescription = embed.message;
+	if (embed.image) metaImage = embed.image;
 
-	if (embed.message)  metaDescription = `<meta content="${embed.message}" property="og:description">`;
-	if (embed.image) metaImage = `<meta content="${embed.image}" property="og:image">`;
-
-	if (embed.hexColor) metaColor = `<meta content="${embed.hexColor}" data-react-helmet="true" name="theme-color"> `;
-	
-	return `<!DOCTYPE html>
+		return `<!DOCTYPE html>
 				<html>
 					<head>
-
+						<title>${title}</title>
+						<meta content="${metaTitle}" property="og:title">
 						<meta property="og:type" content="website">
 						<meta content="${metaUrl}" property="og:url">
-						${title}
-						${metaTitle}
-						${metaDescription}
-						${metaUrl}
-						${metaImage}
-						${metaColor} 
+						<meta content="${metaColor}" data-react-helmet="true" name="theme-color"> 
+						<meta content="${metaDescription}" property="og:description">
+						<meta content="${metaImage}" property="og:image">
 					</head>
 				</html>`;
 }
